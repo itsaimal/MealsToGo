@@ -10,6 +10,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {SafeArea} from "./src/components/utilty/safe-area.components"
 import {Ionicons} from "@expo/vector-icons";
+import {  RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
+
 
 
 
@@ -61,6 +63,7 @@ if(!oswaldLoaded || !latoLoaded) {
   return (
     <>
    <ThemeProvider theme={theme}>
+     <RestaurantsContextProvider >
    <NavigationContainer>
    <Tab.Navigator
             screenOptions={createScreenOptions}
@@ -74,7 +77,7 @@ if(!oswaldLoaded || !latoLoaded) {
             <Tab.Screen name="Settings" component={Settings} />
           </Tab.Navigator>
     </NavigationContainer>
-    
+    </RestaurantsContextProvider>
    </ThemeProvider>
     <ExpoStatusBar style='auto'/>
     </>
