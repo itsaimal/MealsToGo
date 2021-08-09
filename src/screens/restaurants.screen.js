@@ -6,13 +6,12 @@ import {RestaurantInfoCard } from '../features/restaurants/components/restaurant
 import styled from "styled-components/native";
 import { SafeArea } from '../components/utilty/safe-area.components';
 import { RestaurantsContext } from '../services/restaurants/restaurants.context';
+import { Search } from '../features/restaurants/components/search.components';
 
 
 
 
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+
 
 const RestaurantList = styled(FlatList).attrs({
 
@@ -34,9 +33,7 @@ const LoadingContainer = styled.View`
 export const RestaurentsScreen = () => {
 
 
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const onChangeSearch = query => setSearchQuery(query);
+   
 
     const {restaurants,isLoading,error} = useContext(RestaurantsContext);
    
@@ -51,15 +48,7 @@ export const RestaurentsScreen = () => {
         </LoadingContainer>
       )}
 
-    <SearchContainer>
-
-    <Searchbar
-      placeholder="Search"
-      onChangeText={onChangeSearch}
-      value={searchQuery}
-    />
-     
-      </SearchContainer>
+  <Search/>
    <RestaurantList data={restaurants}
    renderItem={({item}) => {
      console.log(item);

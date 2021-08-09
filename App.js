@@ -11,7 +11,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {SafeArea} from "./src/components/utilty/safe-area.components"
 import {Ionicons} from "@expo/vector-icons";
 import {  RestaurantsContextProvider } from './src/services/restaurants/restaurants.context';
-
+import { LocationContextProvider } from './src/services/location/location.context';
 
 
 
@@ -63,6 +63,7 @@ if(!oswaldLoaded || !latoLoaded) {
   return (
     <>
    <ThemeProvider theme={theme}>
+     <LocationContextProvider>
      <RestaurantsContextProvider >
    <NavigationContainer>
    <Tab.Navigator
@@ -78,6 +79,7 @@ if(!oswaldLoaded || !latoLoaded) {
           </Tab.Navigator>
     </NavigationContainer>
     </RestaurantsContextProvider>
+    </LocationContextProvider>
    </ThemeProvider>
     <ExpoStatusBar style='auto'/>
     </>
