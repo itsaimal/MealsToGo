@@ -1,5 +1,5 @@
 import React, {useState,useContext} from 'react';
-import { FlatList} from 'react-native';
+import { FlatList,Pressable,TouchableOpacity} from 'react-native';
 
 import { Searchbar,ActivityIndicator, Colors } from 'react-native-paper';
 import {RestaurantInfoCard } from '../features/restaurants/components/restaurant-info-card.components';
@@ -30,7 +30,7 @@ const LoadingContainer = styled.View`
 `;
 
 
-export const RestaurentsScreen = () => {
+export const RestaurantsScreen = ({navigation}) => {
 
 
    
@@ -51,10 +51,11 @@ export const RestaurentsScreen = () => {
   <Search/>
    <RestaurantList data={restaurants}
    renderItem={({item}) => {
-     console.log(item);
+     
    
 return(
-  <RestaurantInfoCard restaurant={item} />
+  <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail",{restaurant: item,})}>
+  <RestaurantInfoCard restaurant={item} /></TouchableOpacity>
 )}
    }
    keyExtractor={(item) => item.name}
